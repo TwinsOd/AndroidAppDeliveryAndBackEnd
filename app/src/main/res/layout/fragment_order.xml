@@ -1,0 +1,250 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/_25dp"
+    tools:context="com.example.twins.nicolinska.fragments.OrderFragment">
+
+
+    <ImageView
+        android:id="@+id/ivBottle"
+        style="?android:attr/mediaRouteButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/gallon" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ivBottle"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@+id/ivBottle"
+        android:layout_toRightOf="@+id/ivBottle"
+        android:stretchColumns="0,2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quantity"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/ivMinus20"
+                style="?android:attr/mediaRouteButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_minus_24dp" />
+
+            <TextView
+                android:id="@+id/tv20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="30sp" />
+
+            <ImageView
+                android:id="@+id/ivPlus20"
+                style="?android:attr/mediaRouteButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_plus_24dp" />
+
+        </TableRow>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tara"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/ivTaraMinus"
+                style="?android:attr/mediaRouteButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_minus_24dp" />
+
+            <TextView
+                android:id="@+id/tvTara"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="30sp" />
+
+            <ImageView
+                android:id="@+id/ivTaraPlus"
+                style="?android:attr/mediaRouteButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_plus_24dp" />
+
+        </TableRow>
+
+    </TableLayout>
+
+
+    <android.support.v7.widget.AppCompatCheckBox
+        android:id="@+id/checkbox_pompa"
+        style="?android:attr/mediaRouteButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/liner_layout_button"
+        android:layout_toRightOf="@+id/ivBottle"
+        android:text="@string/pompa"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <LinearLayout
+        android:id="@+id/liner_layout_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivBottle"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/windowBackground" />
+
+        <Button
+            android:id="@+id/button_little_battle"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/little_battle"
+            android:textColor="@color/colorPrimaryDark" />
+
+
+        <View
+            android:id="@+id/view_little_battle"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/windowBackground" />
+
+        <Button
+            android:id="@+id/button_books"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/books"
+            android:textColor="@color/colorPrimaryDark" />
+
+        <View
+            android:id="@+id/view_books"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/windowBackground" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scroll_view_info"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/liner_layout_button"
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:id="@+id/liner_layout_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10dp"
+            android:layout_marginTop="@dimen/_10dp"
+            android:background="@color/windowBackground"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_person_gray_24dp"
+                android:text="Vladymyr" />
+
+            <TextView
+                android:id="@+id/text_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_name"
+                android:drawableLeft="@drawable/ic_place_gray_24dp"
+                android:text="Краснова 14, кв. 196, пар 6, 4 этаж." />
+
+            <TextView
+                android:id="@+id/text_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_place"
+                android:drawableLeft="@drawable/ic_phone_gray_24dp"
+                android:text="0936983909, 0502985379" />
+
+            <TextView
+                android:id="@+id/text_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_phone"
+                android:drawableLeft="@drawable/ic_email_gray_24dp"
+                android:text="twins@gmail.com" />
+
+            <TextView
+                android:id="@+id/text_comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_email"
+                android:drawableLeft="@drawable/ic_chat_gray_24dp" />
+
+            <ImageView
+                android:id="@+id/image_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/_5dp"
+                android:src="@drawable/ic_edit_24dp" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/_15dp"
+                android:layout_alignBottom="@+id/text_comments"
+                android:clickable="true"
+                app:fabSize="mini"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_send_24dp" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tv_load_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Заполните контактные данные"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/liner_layout_button"
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@drawable/ic_add_box_24dp"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,51 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <PreferenceCategory
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Укажите свои данные.">
+
+        <EditTextPreference
+            android:icon="@drawable/ic_person_24dp"
+            android:key="pref_name"
+            android:summary="Введите имя"
+            android:title="Имя" />
+
+        <EditTextPreference
+            android:icon="@drawable/ic_place_24dp"
+            android:key="pref_address"
+            android:summary="Введите адрес"
+            android:title="Адрес" />
+
+        <EditTextPreference
+            android:icon="@drawable/ic_phone_24dp"
+            android:key="pref_phone"
+            android:summary="Введите телефон"
+            android:title="Телефон" />
+
+        <EditTextPreference
+            android:icon="@drawable/ic_email_24dp"
+            android:key="pref_email"
+            android:summary="Введите e-mail"
+            android:title="e-mail" />
+
+        <EditTextPreference
+            android:icon="@drawable/ic_chat_24dp"
+            android:key="pref_comments"
+            android:summary="Введите комментарий"
+            android:title="Комментарий" />
+
+        <SwitchPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="true"
+            android:key="pref_enable_confirmation"
+            android:summary="При каждом заказе будет отпрален e-mail с Вашем заказом"
+            android:title="Подтверждение заказа" />
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
