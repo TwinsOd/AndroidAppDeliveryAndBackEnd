@@ -59,14 +59,9 @@ public class SaleFragment extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         mToolbar = (Toolbar) mView.findViewById(R.id.toolbar_fragment);
-        mToolbar.setTitle("Товары");
+        mToolbar.setTitle(R.string.goods);
         mToolbar.setNavigationIcon(R.drawable.ic_back_white);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().onBackPressed();
-            }
-        });
+        mToolbar.setNavigationOnClickListener(v -> getActivity().onBackPressed());
         createAdapter();
         return mView;
     }

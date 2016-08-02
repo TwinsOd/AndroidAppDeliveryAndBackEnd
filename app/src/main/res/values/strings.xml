@@ -26,6 +26,14 @@
     <string name="phone">Телефон</string>
     <string name="name">Имя</string>
     <string name="pompa">помпа</string>
+    <string name="choose">"Выбрано: "</string>
+    <string name="info_to_order">Информация о заказе</string>
+    <string name="to_order">Заказать</string>
+    <string name="products">Продукция</string>
+    <string name="about_us">О нас</string>
+    <string name="programms">О программе</string>
+    <string name="contacts">Контакты</string>
+    <string name="goods">Товары</string>
 
     <string-array name="custom_months">
         <item>Январь</item>

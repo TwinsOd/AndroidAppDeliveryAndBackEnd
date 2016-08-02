@@ -13,7 +13,7 @@ public class MenuProgramsFragment extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        getDialog().setTitle("О программе");
+        getDialog().setTitle(R.string.programms);
         return inflater.inflate(R.layout.fragment_menu_programs, container, false);
     }
 

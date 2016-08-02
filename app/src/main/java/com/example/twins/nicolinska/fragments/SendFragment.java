@@ -71,12 +71,7 @@ public class SendFragment extends Fragment implements OnSendDataListener {
         mToolbar = (Toolbar) mView.findViewById(R.id.toolbar_fragment);
         mToolbar.setTitle("Заказ");
         mToolbar.setNavigationIcon(R.drawable.ic_back_white);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().onBackPressed();
-            }
-        });
+        mToolbar.setNavigationOnClickListener(v -> getActivity().onBackPressed());
 
         textView = (TextView) mView.findViewById(R.id.text_name);
         textView.setText(mSharedPreferences.getString("pref_name", ""));
@@ -93,12 +88,7 @@ public class SendFragment extends Fragment implements OnSendDataListener {
         calendar.add(Calendar.DATE, 1);
         printDate(calendar);
         LinearLayout linearLayoutDate = (LinearLayout) mView.findViewById(R.id.liner_layout_summa_date);
-        linearLayoutDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startDialogData();
-            }
-        });
+        linearLayoutDate.setOnClickListener(v -> startDialogData());
 
         Button buttonSend = (Button) mView.findViewById(R.id.btn_send_to_server);
 
@@ -111,13 +101,9 @@ public class SendFragment extends Fragment implements OnSendDataListener {
         ArrayAdapter adapter = new ArrayAdapter<String>(getContext(), R.layout.item_order, arrayListOrder);
         listOrder.setAdapter(adapter);
 
-        buttonSend.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
+        buttonSend.setOnClickListener(v -> {
                 sendData();
                 new DialogInfoSendOrderFragment().show(getFragmentManager(), "info_send_order_fragment");
-            }
         });
 
         return mView;

@@ -13,7 +13,7 @@ import rx.Observable;
 public interface ApiService {
 
     @FormUrlEncoded
-    @POST("/xxx/xxx.php")
+    @POST("/app/xxx.php")
     Observable<AnswerServer> setOrder(@FieldMap Map<String, String> map);
 
 }

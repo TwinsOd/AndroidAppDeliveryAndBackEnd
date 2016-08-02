@@ -17,7 +17,7 @@ public class DialogInfoSendOrderFragment extends DialogFragment implements View.
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View mView = inflater.inflate(R.layout.fragment_info_send_order, container, false);
-        getDialog().setTitle("Информация о заказе");
+        getDialog().setTitle(R.string.info_to_order);
         mBtnOk = (Button) mView.findViewById(R.id.btn_yes);
         mBtnOk.setOnClickListener(this);
         return mView;

@@ -66,13 +66,9 @@ public class SaleRecyclerViewAdapter extends RecyclerView.Adapter<SaleRecyclerVi
             goodsName = (TextView) itemView.findViewById(R.id.person_name);
             goodsPrice = (TextView) itemView.findViewById(R.id.person_price);
             value = (TextView) itemView.findViewById(R.id.value);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    OrderFragment.OnHeadlineSelectedListener mCallback = (OrderFragment.OnHeadlineSelectedListener) context;
-                    mCallback.onChooseQuaqly(getPosition(), context);
-
-                }
+            itemView.setOnClickListener(v -> {
+                OrderFragment.OnHeadlineSelectedListener mCallback = (OrderFragment.OnHeadlineSelectedListener) context;
+                mCallback.onChooseQuaqly(getPosition(), context);
             });
         }
     }

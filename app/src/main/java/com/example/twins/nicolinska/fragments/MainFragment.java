@@ -36,12 +36,10 @@ public class MainFragment extends Fragment {
         viewPager = (ViewPager) mView.findViewById(R.id.viewpager);
         setupViewPager(viewPager);
         mToolbar = (Toolbar) mView.findViewById(R.id.toolbar);
-        mToolbar.setTitle("Николиская");
+        mToolbar.setTitle(getString(R.string.nicolinska));
         mToolbar.inflateMenu(R.menu.menu_main);
 
-        mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
+        mToolbar.setOnMenuItemClickListener((MenuItem item) -> {
                 switch (item.getItemId()) {
                     case R.id.menu_contact:
                         new MenuContactFragment().show(getFragmentManager(), "menu_contact_fragment");
@@ -54,7 +52,6 @@ public class MainFragment extends Fragment {
                         break;
                 }
                 return true;
-            }
         });
 
 
@@ -65,9 +62,9 @@ public class MainFragment extends Fragment {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
-        adapter.addFragment(new OrderFragment(), "Заказать");
-        adapter.addFragment(new GoodsFragment(), "Продукция");
-        adapter.addFragment(new AboutUsFragment(), "О нас");
+        adapter.addFragment(new OrderFragment(), getString(R.string.to_order));
+        adapter.addFragment(new GoodsFragment(), getString(R.string.products));
+        adapter.addFragment(new AboutUsFragment(), getString(R.string.about_us));
         viewPager.setAdapter(adapter);
     }
 

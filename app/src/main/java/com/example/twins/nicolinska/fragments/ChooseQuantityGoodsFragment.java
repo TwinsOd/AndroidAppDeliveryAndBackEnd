@@ -50,12 +50,9 @@ public class ChooseQuantityGoodsFragment extends DialogFragment implements View.
 
         numberpicker.setMinValue(0);
         numberpicker.setMaxValue(100);
-        numberpicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+        numberpicker.setOnValueChangedListener((NumberPicker picker, int oldVal, int newVal) -> {
                 mVal = newVal;
-                textview.setText("Выбрано: " + newVal);
-            }
+            textview.setText(getString(R.string.choose) + newVal);
         });
         return mView;
     }
