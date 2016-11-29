@@ -13,9 +13,9 @@ public class ApiManager {
 
     private ApiManager() {}
     @NonNull
-    public static Observable<AnswerServer> getVideoInfo(Map<String, String> map) {
+    public static Observable<AnswerServer> setOrder(Map<String, String> map) {
         return ApiFactory.getApiService()
-                .setOrder(map)
+                .requestOrder(map)
                 .retry(RETRY_COUNT_FOR_REQUEST)
                 .map(response -> response);
     }

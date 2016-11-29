@@ -164,7 +164,7 @@ public class SendFragment extends Fragment implements OnSendDataListener {
 
     private void sendData() {
         mapOrder.put("name", mSharedPreferences.getString("pref_name", ""));
-        mapOrder.put("address", mSharedPreferences.getString("pref_address ", ""));
+        mapOrder.put("address", mSharedPreferences.getString("pref_address", ""));
         mapOrder.put("phones", mSharedPreferences.getString("pref_phone", ""));
         mapOrder.put("summa", String.valueOf(summa));
         mapOrder.put("dateorder", year + "-" + (month + 1) + "-" + day);
@@ -173,7 +173,7 @@ public class SendFragment extends Fragment implements OnSendDataListener {
         if (mSharedPreferences.getString("pref_comments", "").length() > 0)
             mapOrder.put("comments", mSharedPreferences.getString("pref_comments", ""));
 
-        Subscription subscription = ApiManager.getVideoInfo(mapOrder)
+        Subscription subscription = ApiManager.setOrder(mapOrder)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::onDataSuccess, this::onDataError);

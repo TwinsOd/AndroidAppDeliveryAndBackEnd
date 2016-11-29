@@ -14,6 +14,6 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("/app2/create_order.php")
-    Observable<AnswerServer> setOrder(@FieldMap Map<String, String> map);
+    Observable<AnswerServer> requestOrder(@FieldMap Map<String, String> map);
 
 }
