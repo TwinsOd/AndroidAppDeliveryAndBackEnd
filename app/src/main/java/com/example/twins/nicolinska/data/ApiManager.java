@@ -2,10 +2,9 @@ package com.example.twins.nicolinska.data;
 
 import android.support.annotation.NonNull;
 
-import com.example.twins.nicolinska.Model.AnswerServer;
-
 import java.util.Map;
 
+import okhttp3.ResponseBody;
 import rx.Observable;
 
 /**
@@ -17,7 +16,7 @@ public class ApiManager {
 
     private ApiManager() {}
     @NonNull
-    public static Observable<AnswerServer> getVideoInfo(Map<String, String> map) {
+    public static Observable<ResponseBody> getVideoInfo(Map<String, String> map) {
         return ApiFactory.getApiService()
                 .setOrder(map)
                 .retry(RETRY_COUNT_FOR_REQUEST)

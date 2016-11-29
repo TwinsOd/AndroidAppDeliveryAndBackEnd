@@ -18,18 +18,19 @@ import android.widget.TextView;
 
 import com.example.twins.nicolinska.Const.PriceProduct;
 import com.example.twins.nicolinska.Interface.OnSendDataListener;
-import com.example.twins.nicolinska.Model.AnswerServer;
 import com.example.twins.nicolinska.Model.SaleModel;
 import com.example.twins.nicolinska.R;
 import com.example.twins.nicolinska.data.ApiManager;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.ResponseBody;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -163,7 +164,7 @@ public class SendFragment extends Fragment implements OnSendDataListener {
 
     private void sendData() {
         mapOrder.put("name", mSharedPreferences.getString("pref_name", ""));
-        mapOrder.put("address", mSharedPreferences.getString("pref_address", ""));
+        mapOrder.put("address", mSharedPreferences.getString("pref_address ", ""));
         mapOrder.put("phones", mSharedPreferences.getString("pref_phone", ""));
         mapOrder.put("summa", String.valueOf(summa));
         mapOrder.put("dateorder", year + "-" + (month + 1) + "-" + day);
@@ -179,9 +180,16 @@ public class SendFragment extends Fragment implements OnSendDataListener {
         mSubscriptions.add(subscription);
     }
 
-    private void onDataSuccess(AnswerServer answerServer) {
-        Log.i("MyLog", "message = " + answerServer.getMessage());
-        Log.i("MyLog", "success = " + answerServer.getSuccess());
+    private void onDataSuccess(ResponseBody answerServer) {
+//        Log.i("MyLog", "message = " + answerServer.getMessage());
+//        Log.i("MyLog", "success = " + answerServer.getSuccess());
+        try {
+            Log.i("MyLog", "toString = " + answerServer.string());
+            //toString = п»ї{"success":"1","message":"Product successfully created."}
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.i("MyLog", "IOException_toString = " + e.toString());
+        }
     }
 
     private void onDataError(Throwable t) {

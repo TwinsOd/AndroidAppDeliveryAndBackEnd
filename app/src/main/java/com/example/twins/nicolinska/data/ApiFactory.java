@@ -15,7 +15,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
  */
 
 public class    ApiFactory {
-    private static final String BASE_URL = "http://www.mysite.com/";
+    private static final String BASE_URL = "http://www.vo-da.com";
     private static final int CONNECT_TIMEOUT = 60;
     private static final int READ_TIMEOUT = 60;
 
