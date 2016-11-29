@@ -2,17 +2,15 @@ package com.example.twins.nicolinska.data;
 
 import android.support.annotation.NonNull;
 
+import com.example.twins.nicolinska.data.converter.JSONConverterFactory;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.jackson.JacksonConverterFactory;
 
-/**
- * Created by Twins on 26.07.2016.
- */
 
 public class    ApiFactory {
     private static final String BASE_URL = "http://www.vo-da.com";
@@ -39,7 +37,7 @@ public class    ApiFactory {
 
         return new Retrofit.Builder()
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .addConverterFactory(JacksonConverterFactory.create())
+                .addConverterFactory(JSONConverterFactory.create())
                 .baseUrl(baseUrl)
                 .client(httpClient.build())
                 .build();
