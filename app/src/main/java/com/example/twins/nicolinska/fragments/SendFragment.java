@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,7 +40,6 @@ import rx.subscriptions.CompositeSubscription;
 
 public class SendFragment extends Fragment implements OnSendDataListener {
     private final CompositeSubscription mSubscriptions = new CompositeSubscription();
-    private final String URL = "http://vo-da.com";
     private SharedPreferences mSharedPreferences;
     private List<String> arrayListOrder = new ArrayList<>();
     private Map<String, String> mapOrder = new HashMap<>();
@@ -49,6 +49,7 @@ public class SendFragment extends Fragment implements OnSendDataListener {
     private TextView textView;
     private int year, month, day, dayWeek;
     private View mView;
+    private ProgressBar progressBar;
 
     public void newInstance(Map<String, String> mapOrder, Map<String, SaleModel> listGoods) {
         this.mapOrder = mapOrder;
@@ -70,20 +71,15 @@ public class SendFragment extends Fragment implements OnSendDataListener {
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
         mToolbar = (Toolbar) mView.findViewById(R.id.toolbar_fragment);
-        mToolbar.setTitle("Заказ");
+        mToolbar.setTitle(R.string.order);
         mToolbar.setNavigationIcon(R.drawable.ic_back_white);
         mToolbar.setNavigationOnClickListener(v -> getActivity().onBackPressed());
 
-        textView = (TextView) mView.findViewById(R.id.text_name);
-        textView.setText(mSharedPreferences.getString("pref_name", ""));
-        textView = (TextView) mView.findViewById(R.id.text_place);
-        textView.setText(mSharedPreferences.getString("pref_address", ""));
-        textView = (TextView) mView.findViewById(R.id.text_phone);
-        textView.setText(mSharedPreferences.getString("pref_phone", ""));
-        textView = (TextView) mView.findViewById(R.id.text_email);
-        textView.setText(mSharedPreferences.getString("pref_email", ""));
-        textView = (TextView) mView.findViewById(R.id.text_comments);
-        textView.setText(mSharedPreferences.getString("pref_comments", ""));
+        setInfo(R.id.text_name, "pref_name");
+        setInfo(R.id.text_place, "pref_address");
+        setInfo(R.id.text_phone, "pref_phone");
+        setInfo(R.id.text_email, "pref_email");
+        setInfo(R.id.text_comments, "pref_comments");
 
         final Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, 1);
@@ -102,12 +98,24 @@ public class SendFragment extends Fragment implements OnSendDataListener {
         ArrayAdapter adapter = new ArrayAdapter<String>(getContext(), R.layout.item_order, arrayListOrder);
         listOrder.setAdapter(adapter);
 
-        buttonSend.setOnClickListener(v -> {
-                sendData();
+        progressBar = (ProgressBar) mView.findViewById(R.id.progress_bar);
 
+        buttonSend.setOnClickListener(v -> {
+            progressBar.setVisibility(View.VISIBLE);
+            sendData();
+            buttonSend.setEnabled(false);
         });
 
         return mView;
+    }
+
+    private void setInfo(int idText, String idPref) {
+        textView = (TextView) mView.findViewById(idText);
+        String value = mSharedPreferences.getString(idPref, "");
+        if (value.length() > 0)
+            textView.setText(value);
+        else
+            textView.setVisibility(View.GONE);
     }
 
     private void startDialogData() {
@@ -185,20 +193,26 @@ public class SendFragment extends Fragment implements OnSendDataListener {
         Log.i("MyLog", "success = " + answerServer.getSuccess());
         if (answerServer.getSuccess() == 1) {
             new DialogInfoSendOrderFragment().show(getFragmentManager(), "info_send_order_fragment");
-        } else {
-            Toast.makeText(getContext(), R.string.error, Toast.LENGTH_SHORT).show();
-        }
+            progressBar.setVisibility(View.INVISIBLE);
+        } else
+            setErrorConnect(answerServer.getMessage());
     }
 
     private void onDataError(Throwable t) {
         //TODO say to user that there is no Internet
         Log.i("MyLog", "onDataError " + t.toString());
-        Toast.makeText(getContext(), R.string.error, Toast.LENGTH_SHORT).show();
+        setErrorConnect(t.toString());
     }
 
     @Override
     public void onDestroy() {
         mSubscriptions.clear();
         super.onDestroy();
+    }
+
+    private void setErrorConnect(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+        progressBar.setVisibility(View.INVISIBLE);
+        mView.findViewById(R.id.layout_error).setVisibility(View.VISIBLE);
     }
 }

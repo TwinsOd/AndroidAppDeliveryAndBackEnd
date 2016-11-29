@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="@dimen/_25dp"
-    tools:context="com.example.twins.nicolinska.fragments.OrderFragment">
+    tools:context="com.example.twins.nicolinska.fragments.main.OrderFragment">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:scrollbars="none"
         app:behavior_overlapTop="30dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -230,17 +230,6 @@
                         android:layout_margin="@dimen/_5dp"
                         android:src="@drawable/ic_edit_24dp" />
 
-                    <android.support.design.widget.FloatingActionButton
-                        android:id="@+id/floatingActionButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBottom="@+id/text_comments"
-                        android:layout_alignParentRight="true"
-                        android:layout_margin="@dimen/_15dp"
-                        android:clickable="true"
-                        android:visibility="gone"
-                        app:fabSize="mini"
-                        app:srcCompat="@drawable/ic_send_24dp" />
                 </RelativeLayout>
 
             </ScrollView>
@@ -259,4 +248,16 @@
 
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/_25dp"
+        android:clickable="true"
+        android:visibility="gone"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_send_24dp" />
 </RelativeLayout>

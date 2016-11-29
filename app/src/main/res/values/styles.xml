@@ -31,4 +31,9 @@
         <item name="android:textColor">@color/mcv_text_date_light</item>
     </style>
 
+    <style name="ProgressBar.Horizontal" parent="@android:style/Widget.Holo.ProgressBar.Horizontal">
+        <item name="android:textColorLink">@color/colorAccent</item>
+        <item name="android:color">@color/colorAccent</item>
+    </style>
+
 </resources>

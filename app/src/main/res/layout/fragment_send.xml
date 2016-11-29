@@ -157,6 +157,42 @@
         android:layout_marginLeft="@dimen/_10dp"
         android:layout_below="@id/liner_layout_summa_date" />
 
+    <LinearLayout
+        android:id="@+id/layout_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black_transparent"
+        android:layout_above="@+id/btn_send_to_server"
+        android:layout_marginBottom="@dimen/_15dp"
+        android:layout_marginLeft="@dimen/_10dp"
+        android:visibility="gone"
+        android:layout_marginRight="@dimen/_10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5dp"
+            android:layout_marginBottom="@dimen/_5dp"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:text="@string/error_repeat"
+            android:textColor="@color/colorAccent" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:background="@android:color/transparent"
+        android:indeterminate="true"
+        android:indeterminateOnly="false"
+        android:indeterminateTintMode="src_atop"
+        android:layout_above="@+id/btn_send_to_server"
+        android:visibility="invisible" />
+
+
     <View
         android:id="@+id/view_bottom"
         android:layout_width="match_parent"

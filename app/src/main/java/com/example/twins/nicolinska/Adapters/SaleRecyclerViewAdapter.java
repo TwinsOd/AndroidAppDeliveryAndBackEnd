@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.example.twins.nicolinska.Model.SaleModel;
 import com.example.twins.nicolinska.R;
-import com.example.twins.nicolinska.fragments.OrderFragment;
+import com.example.twins.nicolinska.fragments.main.OrderFragment;
 
 import java.util.List;
 

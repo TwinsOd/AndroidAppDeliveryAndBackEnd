@@ -1,4 +1,4 @@
-package com.example.twins.nicolinska.fragments;
+package com.example.twins.nicolinska.fragments.main;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

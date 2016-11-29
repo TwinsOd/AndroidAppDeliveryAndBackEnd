@@ -1,4 +1,4 @@
-package com.example.twins.nicolinska.fragments;
+package com.example.twins.nicolinska.fragments.main;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -90,21 +90,24 @@ public class OrderFragment extends Fragment implements View.OnClickListener {
             scrollViewInfo.setVisibility(View.VISIBLE);
             tvLoadData.setVisibility(View.GONE);
 
-
-            textView = (TextView) mView.findViewById(R.id.text_name);
-            textView.setText(mSharedPreferences.getString("pref_name", ""));
-            textView = (TextView) mView.findViewById(R.id.text_place);
-            textView.setText(mSharedPreferences.getString("pref_address", ""));
-            textView = (TextView) mView.findViewById(R.id.text_phone);
-            textView.setText(mSharedPreferences.getString("pref_phone", ""));
-            textView = (TextView) mView.findViewById(R.id.text_email);
-            textView.setText(mSharedPreferences.getString("pref_email", ""));
-            textView = (TextView) mView.findViewById(R.id.text_comments);
-            textView.setText(mSharedPreferences.getString("pref_comments", ""));
+            setInfo(R.id.text_name, "pref_name");
+            setInfo(R.id.text_place, "pref_address");
+            setInfo(R.id.text_phone, "pref_phone");
+            setInfo(R.id.text_email, "pref_email");
+            setInfo(R.id.text_comments, "pref_comments");
         } else {
             tvLoadData.setVisibility(View.VISIBLE);
             scrollViewInfo.setVisibility(View.GONE);
         }
+    }
+
+    private void setInfo(int idText, String idPref) {
+        textView = (TextView) mView.findViewById(idText);
+        String value = mSharedPreferences.getString(idPref, "");
+        if (value.length() > 0)
+            textView.setText(value);
+        else
+            textView.setVisibility(View.GONE);
     }
 
     @Override

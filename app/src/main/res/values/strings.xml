@@ -29,12 +29,17 @@
     <string name="choose">"Выбрано: "</string>
     <string name="info_to_order">Информация о заказе</string>
     <string name="to_order">Заказать</string>
+    <string name="order">Заказ</string>
     <string name="products">Продукция</string>
     <string name="about_us">О нас</string>
     <string name="programms">О программе</string>
     <string name="contacts">Контакты</string>
     <string name="goods">Товары</string>
     <string name="error">Произошла ошибка!!!</string>
+    <string name="you_order_completed">Ваш заказ успешно отправлен!</string>
+    <string name="email_sending">*если Вы указали e-mail, то подтверждение придёт к Вам на почту.</string>
+    <string name="ok">OK</string>
+    <string name="error_repeat">Произошла ошибка!!! \n Проверьте подключение к интернету и попробуйте ещё раз отправить.</string>
 
     <string-array name="custom_months">
         <item>Январь</item>

@@ -11,10 +11,10 @@ import com.example.twins.nicolinska.Interface.OnExitDialogListener;
 import com.example.twins.nicolinska.Model.SaleModel;
 import com.example.twins.nicolinska.fragments.ButtonFragment;
 import com.example.twins.nicolinska.fragments.ChooseQuantityGoodsFragment;
-import com.example.twins.nicolinska.fragments.MainFragment;
-import com.example.twins.nicolinska.fragments.OrderFragment;
 import com.example.twins.nicolinska.fragments.SaleFragment;
 import com.example.twins.nicolinska.fragments.SendFragment;
+import com.example.twins.nicolinska.fragments.main.MainFragment;
+import com.example.twins.nicolinska.fragments.main.OrderFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;

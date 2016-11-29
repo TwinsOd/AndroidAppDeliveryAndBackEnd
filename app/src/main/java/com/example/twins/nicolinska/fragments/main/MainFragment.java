@@ -1,4 +1,4 @@
-package com.example.twins.nicolinska.fragments;
+package com.example.twins.nicolinska.fragments.main;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.twins.nicolinska.R;
+import com.example.twins.nicolinska.fragments.MenuContactFragment;
+import com.example.twins.nicolinska.fragments.MenuProgramsFragment;
 
 import java.util.ArrayList;
 import java.util.List;

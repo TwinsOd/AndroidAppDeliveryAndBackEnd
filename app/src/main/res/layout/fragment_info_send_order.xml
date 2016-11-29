@@ -11,9 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:gravity="center"
         android:layout_marginTop="@dimen/_20dp"
         android:layout_marginBottom="@dimen/_15dp"
-        android:text="Ваш заказ успешно отправлен!"
+        android:text="@string/you_order_completed"
         android:textSize="20sp" />
 
     <TextView
@@ -24,7 +25,7 @@
         android:layout_marginRight="@dimen/_15dp"
         android:layout_gravity="center_horizontal"
         android:textSize="16sp"
-        android:text="*если Вы указали e-mail, то подтверждение придёт к Вам на почту." />
+        android:text="@string/email_sending" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,7 +39,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/darker_gray"
             android:layout_weight="1"
-            android:text="ОК" />
+            android:text="@string/ok" />
 
     </LinearLayout>
 
