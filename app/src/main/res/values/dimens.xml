@@ -9,6 +9,7 @@
 
     <dimen name="_0dp">0dp</dimen>
     <dimen name="_1dp">1dp</dimen>
+    <dimen name="_3dp">3dp</dimen>
     <dimen name="_5dp">5dp</dimen>
     <dimen name="_10dp">10dp</dimen>
     <dimen name="_15dp">15dp</dimen>

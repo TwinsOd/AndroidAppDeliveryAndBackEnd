@@ -30,7 +30,6 @@ import static com.example.twins.nicolinska.MainActivity.PRICE_JSON;
 public class GoodsFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
     private LinearLayoutManager mLayoutManager;
     private List<Goods> goodsList;
     private PriceModel priceModel;
@@ -48,13 +47,13 @@ public class GoodsFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        initializeData();
-        initializeAdapter();
 
         sharedPref = getActivity().getSharedPreferences(getActivity().getLocalClassName(), MODE_PRIVATE);
 
         if (sharedPref.contains(PRICE_JSON)) {
             getPriceFromSharedPref();
+            initializeData();
+            initializeAdapter();
         }
         return mView;
     }
@@ -69,7 +68,6 @@ public class GoodsFragment extends Fragment {
             e.printStackTrace();
             Log.i("MyLog", "error_GoodsFragment_getPriceFromSharedPref");
         }
-        mRecyclerView.notifyAll();
     }
 
     private void initializeAdapter() {

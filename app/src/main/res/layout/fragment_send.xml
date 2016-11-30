@@ -46,6 +46,7 @@
             android:id="@+id/text_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_3dp"
             android:drawableLeft="@drawable/ic_person_gray_24dp" />
 
         <TextView
@@ -53,6 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/text_name"
+            android:layout_marginBottom="@dimen/_3dp"
             android:drawableLeft="@drawable/ic_place_gray_24dp" />
 
         <TextView
@@ -60,6 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/text_place"
+            android:layout_marginBottom="@dimen/_3dp"
             android:drawableLeft="@drawable/ic_phone_gray_24dp" />
 
         <TextView
@@ -67,6 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/text_phone"
+            android:layout_marginBottom="@dimen/_3dp"
             android:drawableLeft="@drawable/ic_email_gray_24dp" />
 
         <TextView

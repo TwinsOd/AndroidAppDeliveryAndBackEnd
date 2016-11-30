@@ -6,18 +6,6 @@
     android:layout_marginBottom="@dimen/_25dp"
     tools:context="com.example.twins.nicolinska.fragments.main.OrderFragment">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/_25dp"
-        android:clickable="true"
-        android:visibility="visible"
-        app:fabSize="mini"
-        app:srcCompat="@drawable/ic_send_24dp" />
-
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,6 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/quantity"
+                    android:gravity="center"
                     android:textColor="@color/primaryText"
                     android:textSize="18sp" />
 
@@ -76,7 +65,7 @@
                         android:id="@+id/tv20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
+                        android:layout_gravity="center"
                         android:text="0"
                         android:textColor="@color/primaryText"
                         android:textSize="26sp" />
@@ -95,6 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tara"
+                    android:gravity="center"
                     android:textColor="@color/primaryText"
                     android:textSize="18sp" />
 
@@ -112,7 +102,7 @@
                         android:id="@+id/tvTara"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
+                        android:layout_gravity="center"
                         android:text="0"
                         android:textColor="@color/primaryText"
                         android:textSize="26sp" />
@@ -196,7 +186,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_10dp"
                     android:layout_marginTop="@dimen/_10dp"
-                    android:background="@color/windowBackground"
                     android:layout_marginLeft="@dimen/_10dp"
                     android:orientation="vertical">
 
@@ -206,6 +195,7 @@
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/ic_person_gray_24dp"
                         android:textColor="@color/secondary_text"
+                        android:layout_marginBottom="@dimen/_3dp"
                         android:text="Vladymyr" />
 
                     <TextView
@@ -215,6 +205,7 @@
                         android:layout_below="@+id/text_name"
                         android:drawableLeft="@drawable/ic_place_gray_24dp"
                         android:textColor="@color/secondary_text"
+                        android:layout_marginBottom="@dimen/_3dp"
                         android:text="Краснова 14, кв. 196, пар 6, 4 этаж." />
 
                     <TextView
@@ -224,6 +215,7 @@
                         android:layout_below="@+id/text_place"
                         android:drawableLeft="@drawable/ic_phone_gray_24dp"
                         android:textColor="@color/secondary_text"
+                        android:layout_marginBottom="@dimen/_3dp"
                         android:text="0936983909, 0502985379" />
 
                     <TextView
@@ -233,6 +225,7 @@
                         android:layout_below="@+id/text_phone"
                         android:drawableLeft="@drawable/ic_email_gray_24dp"
                         android:textColor="@color/secondary_text"
+                        android:layout_marginBottom="@dimen/_3dp"
                         android:text="twins@gmail.com" />
 
                     <TextView
@@ -248,7 +241,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_margin="@dimen/_5dp"
+                        android:layout_margin="@dimen/_15dp"
                         android:textColor="@color/secondary_text"
                         android:src="@drawable/ic_edit_24dp" />
 
@@ -270,4 +263,16 @@
 
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/_25dp"
+        android:clickable="true"
+        android:visibility="visible"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_send_24dp" />
 </RelativeLayout>
