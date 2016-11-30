@@ -5,7 +5,7 @@
     <PreferenceCategory
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="Укажите свои данные.">
+        android:title="Заполните свои данные.">
 
         <EditTextPreference
             android:icon="@drawable/ic_person_24dp"
@@ -45,7 +45,12 @@
             android:summary="При каждом заказе будет отпрален e-mail с Вашем заказом"
             android:title="Подтверждение заказа" />
 
+        <Preference
+            android:gravity="center"
+            android:key="save_button"
+            android:title="Сохранить" />
 
     </PreferenceCategory>
+
 
 </PreferenceScreen>

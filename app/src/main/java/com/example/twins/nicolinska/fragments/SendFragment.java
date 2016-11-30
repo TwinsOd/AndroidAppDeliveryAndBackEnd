@@ -194,6 +194,7 @@ public class SendFragment extends Fragment implements OnSendDataListener {
         if (answerServer.getSuccess() == 1) {
             new DialogInfoSendOrderFragment().show(getFragmentManager(), "info_send_order_fragment");
             progressBar.setVisibility(View.INVISIBLE);
+            mView.findViewById(R.id.layout_error).setVisibility(View.GONE);
         } else
             setErrorConnect(answerServer.getMessage());
     }

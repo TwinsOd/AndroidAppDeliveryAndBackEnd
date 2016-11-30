@@ -6,12 +6,27 @@
     android:layout_marginBottom="@dimen/_25dp"
     tools:context="com.example.twins.nicolinska.fragments.main.OrderFragment">
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/_25dp"
+        android:clickable="true"
+        android:visibility="gone"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_send_24dp" />
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none"
         app:behavior_overlapTop="30dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -44,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/quantity"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/primaryText"
                     android:textSize="18sp" />
 
                 <TableRow>
@@ -63,8 +78,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="0"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="30sp" />
+                        android:textColor="@color/primaryText"
+                        android:textSize="26sp" />
 
                     <ImageView
                         android:id="@+id/ivPlus20"
@@ -80,7 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tara"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/primaryText"
                     android:textSize="18sp" />
 
                 <TableRow>
@@ -99,8 +114,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="0"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="30sp" />
+                        android:textColor="@color/primaryText"
+                        android:textSize="26sp" />
 
                     <ImageView
                         android:id="@+id/ivTaraPlus"
@@ -123,7 +138,7 @@
                 android:layout_above="@+id/liner_layout_button"
                 android:layout_toRightOf="@+id/ivBottle"
                 android:text="@string/pompa"
-                android:textColor="@color/colorPrimaryDark" />
+                android:textColor="@color/primaryText" />
 
             <LinearLayout
                 android:id="@+id/liner_layout_button"
@@ -139,11 +154,11 @@
 
                 <Button
                     android:id="@+id/button_little_battle"
-                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/lightColorPrimary"
                     android:text="@string/little_battle"
-                    android:textColor="@color/colorPrimaryDark" />
+                    android:textColor="@color/primaryText" />
 
 
                 <View
@@ -154,11 +169,11 @@
 
                 <Button
                     android:id="@+id/button_books"
-                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/books"
-                    android:textColor="@color/colorPrimaryDark" />
+                    android:backgroundTint="@color/lightColorPrimary"
+                    android:textColor="@color/primaryText" />
 
                 <View
                     android:id="@+id/view_books"
@@ -182,6 +197,7 @@
                     android:layout_marginBottom="@dimen/_10dp"
                     android:layout_marginTop="@dimen/_10dp"
                     android:background="@color/windowBackground"
+                    android:layout_marginLeft="@dimen/_10dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -189,6 +205,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/ic_person_gray_24dp"
+                        android:textColor="@color/secondary_text"
                         android:text="Vladymyr" />
 
                     <TextView
@@ -197,6 +214,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/text_name"
                         android:drawableLeft="@drawable/ic_place_gray_24dp"
+                        android:textColor="@color/secondary_text"
                         android:text="Краснова 14, кв. 196, пар 6, 4 этаж." />
 
                     <TextView
@@ -205,6 +223,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/text_place"
                         android:drawableLeft="@drawable/ic_phone_gray_24dp"
+                        android:textColor="@color/secondary_text"
                         android:text="0936983909, 0502985379" />
 
                     <TextView
@@ -213,6 +232,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/text_phone"
                         android:drawableLeft="@drawable/ic_email_gray_24dp"
+                        android:textColor="@color/secondary_text"
                         android:text="twins@gmail.com" />
 
                     <TextView
@@ -220,6 +240,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/text_email"
+                        android:textColor="@color/secondary_text"
                         android:drawableLeft="@drawable/ic_chat_gray_24dp" />
 
                     <ImageView
@@ -228,6 +249,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_margin="@dimen/_5dp"
+                        android:textColor="@color/secondary_text"
                         android:src="@drawable/ic_edit_24dp" />
 
                 </RelativeLayout>
@@ -248,16 +270,4 @@
 
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/_25dp"
-        android:clickable="true"
-        android:visibility="gone"
-        app:fabSize="mini"
-        app:srcCompat="@drawable/ic_send_24dp" />
 </RelativeLayout>

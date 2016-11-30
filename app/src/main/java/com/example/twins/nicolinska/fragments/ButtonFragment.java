@@ -2,9 +2,11 @@ package com.example.twins.nicolinska.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.twins.nicolinska.Interface.OnExitDialogListener;
 import com.example.twins.nicolinska.R;
@@ -20,8 +22,17 @@ public class ButtonFragment extends android.preference.PreferenceFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.layout.fragment_button);
+        addPreferencesFromResource(R.layout.fragment_button_writing);
 
+        Preference button = (Preference) findPreference("save_button");
+        button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Toast.makeText(context, "clicking button", Toast.LENGTH_SHORT).show();
+                getActivity().onBackPressed();
+                return true;
+            }
+        });
     }
 
     @Override

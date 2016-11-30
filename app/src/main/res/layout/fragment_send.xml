@@ -33,7 +33,7 @@
         android:text="Проверьте и подтвердите Ваш заказ."
         android:textSize="18sp"
         android:layout_below="@+id/app_bar"
-        android:textColor="@color/colorPrimaryDark" />
+        android:textColor="@color/primaryText" />
 
     <RelativeLayout
         android:id="@+id/liner_layout_profile"
@@ -85,19 +85,20 @@
         android:layout_below="@+id/liner_layout_profile"
         android:orientation="vertical"
         android:layout_marginTop="@dimen/_10dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/lightColorPrimary"
         android:gravity="center_horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Сумма Вашего заказа:"
-                android:textColor="@color/windowBackground" />
+                android:textColor="@color/primaryText" />
 
             <TextView
                 android:id="@+id/tv_summa"
@@ -106,25 +107,26 @@
                 android:layout_marginLeft="@dimen/_10dp"
                 android:layout_marginRight="@dimen/_10dp"
                 android:textStyle="bold"
-                android:textColor="@color/windowBackground" />
+                android:textColor="@color/primaryText" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/windowBackground"
+                android:textColor="@color/primaryText"
                 android:text="грн" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_5dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Дата доставки:"
-                android:textColor="@color/windowBackground" />
+                android:textColor="@color/primaryText" />
 
             <TextView
                 android:id="@+id/tv_date"
@@ -133,7 +135,7 @@
                 android:layout_marginLeft="@dimen/_10dp"
                 android:layout_marginRight="@dimen/_10dp"
                 android:textStyle="bold"
-                android:textColor="@color/windowBackground" />
+                android:textColor="@color/primaryText" />
 
             <TextView
                 android:id="@+id/tv_date_week"
@@ -153,7 +155,7 @@
         android:id="@+id/list_view_order"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/view_bottom"
+        android:layout_above="@+id/btn_send_to_server"
         android:layout_marginLeft="@dimen/_10dp"
         android:layout_below="@id/liner_layout_summa_date" />
 
@@ -176,7 +178,7 @@
             android:gravity="center"
             android:textSize="18sp"
             android:text="@string/error_repeat"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@android:color/holo_red_dark" />
     </LinearLayout>
 
     <ProgressBar
@@ -192,20 +194,12 @@
         android:layout_above="@+id/btn_send_to_server"
         android:visibility="invisible" />
 
-
-    <View
-        android:id="@+id/view_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/colorPrimaryDark"
-        android:layout_above="@+id/btn_send_to_server" />
-
     <Button
         android:id="@+id/btn_send_to_server"
-        style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/lightColorPrimary"
         android:text="отправить заказ" />
 
 </RelativeLayout>
