@@ -1,10 +1,5 @@
 package com.example.twins.nicolinska.data.converter;
 
-/**
- * Created by User on 29-Nov-16.
- */
-
-
 import android.util.Log;
 
 import com.fasterxml.jackson.databind.ObjectReader;
@@ -41,6 +36,8 @@ final class JSONResponseBodyConverter<T> implements Converter<ResponseBody, T> {
             Log.i("MyLog", "IOException = " + e.toString());
             string = "\\{\"success\":\"0\",\"message\":\"error IOException\"}";
         }
+
+        if (string.length() > 77) return new StringReader(string);
 
         String[] listStr = string.split("\\{");
         String newStr = "{" + listStr[1];

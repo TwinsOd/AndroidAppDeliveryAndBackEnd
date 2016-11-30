@@ -5,10 +5,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.example.twins.nicolinska.Const.PriceProduct;
 import com.example.twins.nicolinska.Interface.OnExitDialogListener;
+import com.example.twins.nicolinska.Model.PriceModel;
 import com.example.twins.nicolinska.Model.SaleModel;
+import com.example.twins.nicolinska.data.ApiManager;
 import com.example.twins.nicolinska.fragments.ButtonFragment;
 import com.example.twins.nicolinska.fragments.ChooseQuantityGoodsFragment;
 import com.example.twins.nicolinska.fragments.SaleFragment;
@@ -20,6 +23,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 public class MainActivity extends AppCompatActivity implements OrderFragment.OnHeadlineSelectedListener,
         ChooseQuantityGoodsFragment.OnClickItemDialogValue, OnExitDialogListener {
@@ -37,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements OrderFragment.OnH
         transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container, new MainFragment());
         transaction.commit();
+
+        loadPrice();
     }
 
     @Override
@@ -107,12 +117,12 @@ public class MainActivity extends AppCompatActivity implements OrderFragment.OnH
         listGoods.put(mSaleList.get(position).name, mSaleList.get(position));
     }
 
-
     @Override
     public void onExitDialogListener() {
         orderFragment.initialInfoContainer();
 
     }
+
 
     private void initializeDataLittleBatke() {
         mSaleList.add(new SaleModel("Вода \"Миколiнська\" 5,0 л н/г", "При заказе: \n" +
@@ -182,6 +192,29 @@ public class MainActivity extends AppCompatActivity implements OrderFragment.OnH
                 "Цена: 50.00грн.",
                 "bookPravilnoePitanie",
                 PriceProduct.roznica.bookPravilnoePitanie, 0));
+    }
+
+    private final CompositeSubscription mSubscriptions = new CompositeSubscription();
+    public PriceModel priceModel;
+
+    private void loadPrice() {
+        Subscription subscription = ApiManager.getPrice()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::onDataSuccess, this::onDataError);
+        mSubscriptions.add(subscription);
+    }
+
+    private void onDataSuccess(PriceModel model) {
+        Log.i("MyLog", "onDataSuccess**********************************");
+        Log.i("MyLog", "getBallon = " + model.getRozniza().getBallon());
+        Log.i("MyLog", "getWater05 = " + model.getRozniza().getWater05());
+        Log.i("MyLog", "getOpt().getWater05() = " + model.getOpt().getWater05());
+        priceModel = model;
+    }
+
+    private void onDataError(Throwable throwable) {
+        Log.i("MyLog", "onDataError" + throwable.toString());
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.twins.nicolinska.data;
 
 import com.example.twins.nicolinska.Model.AnswerServer;
+import com.example.twins.nicolinska.Model.PriceModel;
 
 import java.util.Map;
 
@@ -16,4 +17,6 @@ public interface ApiService {
     @POST("/app2/create_order.php")
     Observable<AnswerServer> requestOrder(@FieldMap Map<String, String> map);
 
+    @POST("/app2/price.json")
+    Observable<PriceModel> requestPrice();
 }
