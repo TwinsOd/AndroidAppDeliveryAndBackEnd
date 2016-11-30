@@ -18,14 +18,16 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.twins.nicolinska.Const.PriceProduct;
 import com.example.twins.nicolinska.Interface.OnSendDataListener;
 import com.example.twins.nicolinska.Model.AnswerServer;
+import com.example.twins.nicolinska.Model.PriceModel;
 import com.example.twins.nicolinska.Model.SaleModel;
 import com.example.twins.nicolinska.R;
 import com.example.twins.nicolinska.data.ApiManager;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -37,10 +39,12 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
+import static android.content.Context.MODE_PRIVATE;
+import static com.example.twins.nicolinska.MainActivity.PRICE_JSON;
+
 
 public class SendFragment extends Fragment implements OnSendDataListener {
     private final CompositeSubscription mSubscriptions = new CompositeSubscription();
-    private SharedPreferences mSharedPreferences;
     private List<String> arrayListOrder = new ArrayList<>();
     private Map<String, String> mapOrder = new HashMap<>();
     private Map<String, SaleModel> listGoods;
@@ -50,6 +54,9 @@ public class SendFragment extends Fragment implements OnSendDataListener {
     private int year, month, day, dayWeek;
     private View mView;
     private ProgressBar progressBar;
+    private PriceModel priceModel;
+    private ListView listOrder;
+    private SharedPreferences mSharedPreferences;
 
     public void newInstance(Map<String, String> mapOrder, Map<String, SaleModel> listGoods) {
         this.mapOrder = mapOrder;
@@ -69,6 +76,7 @@ public class SendFragment extends Fragment implements OnSendDataListener {
 
         mView = inflater.inflate(R.layout.fragment_send, container, false);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        getPriceFromSharedPref();
 
         mToolbar = (Toolbar) mView.findViewById(R.id.toolbar_fragment);
         mToolbar.setTitle(R.string.order);
@@ -89,14 +97,7 @@ public class SendFragment extends Fragment implements OnSendDataListener {
 
         Button buttonSend = (Button) mView.findViewById(R.id.btn_send_to_server);
 
-        ListView listOrder = (ListView) mView.findViewById(R.id.list_view_order);
-        loadArrayListOrder();
-
-        textView = (TextView) mView.findViewById(R.id.tv_summa);
-        textView.setText(String.valueOf(summa));
-
-        ArrayAdapter adapter = new ArrayAdapter<String>(getContext(), R.layout.item_order, arrayListOrder);
-        listOrder.setAdapter(adapter);
+        listOrder = (ListView) mView.findViewById(R.id.list_view_order);
 
         progressBar = (ProgressBar) mView.findViewById(R.id.progress_bar);
 
@@ -106,7 +107,27 @@ public class SendFragment extends Fragment implements OnSendDataListener {
             buttonSend.setEnabled(false);
         });
 
+        loadArrayListOrder();
+        ArrayAdapter adapter = new ArrayAdapter<String>(getContext(), R.layout.item_order, arrayListOrder);
+        listOrder.setAdapter(adapter);
+
+        textView = (TextView) mView.findViewById(R.id.tv_summa);
+        textView.setText(String.valueOf(summa));
+
         return mView;
+    }
+
+    private void getPriceFromSharedPref() {
+        String jsonPrice = getActivity().getSharedPreferences(getActivity().getLocalClassName(), MODE_PRIVATE).getString(PRICE_JSON, "");
+        Log.i("MyLog", "jsonPrice = " + jsonPrice);
+        ObjectMapper mapper = new ObjectMapper();
+
+        try {
+            priceModel = mapper.readValue(jsonPrice, PriceModel.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.i("MyLog", "error_GoodsFragment_getPriceFromSharedPref");
+        }
     }
 
     private void setInfo(int idText, String idPref) {
@@ -142,21 +163,21 @@ public class SendFragment extends Fragment implements OnSendDataListener {
     private void loadArrayListOrder() {
         int price;
         if (Integer.parseInt(mapOrder.get("bullon")) > 0) {
-            price = Integer.parseInt(mapOrder.get("bullon")) * PriceProduct.roznica.ballon;
+            price = Integer.parseInt(mapOrder.get("bullon")) * (int) priceModel.getRozniza().getBallon();
             arrayListOrder.add("Баллон: " + mapOrder.get("bullon") + " шт." + " = " + price + " грн");
             summa += price;
         } else if (Integer.parseInt(mapOrder.get("bullon")) >= 10) {
-            price = Integer.parseInt(mapOrder.get("bullon")) * PriceProduct.opt.bullon;
+            price = Integer.parseInt(mapOrder.get("bullon")) * (int) priceModel.getOpt().getBallon();
             arrayListOrder.add("Баллон: " + mapOrder.get("bullon") + " шт." + " = " + price + " грн");
             summa += price;
         }
         if (mapOrder.containsKey("tara")) {
-            price = Integer.parseInt(mapOrder.get("tara")) * PriceProduct.roznica.tara;
+            price = Integer.parseInt(mapOrder.get("tara")) * (int) priceModel.getRozniza().getTara();
             arrayListOrder.add("Возратная тара: " + mapOrder.get("tara") + " шт." + " = " + price + " грн");
             summa += price;
         }
         if (mapOrder.containsKey("pompa")) {
-            price = Integer.parseInt(mapOrder.get("pompa")) * PriceProduct.roznica.pompa;
+            price = Integer.parseInt(mapOrder.get("pompa")) * (int) priceModel.getRozniza().getPompa();
             arrayListOrder.add("Помпа: " + mapOrder.get("pompa") + " шт." + " = " + price + " грн");
             summa += price;
         }

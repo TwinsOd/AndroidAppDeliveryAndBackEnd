@@ -19,6 +19,38 @@ public class PriceModel {
         return opt;
     }
 
+    public String toJSON() {
+        return "{\n" +
+                "  \"rozniza\": {\n" +
+                "    \"ballon\": " + getRozniza().getBallon() + ",\n" +
+                "\"tara\": " + getRozniza().getTara() + ",\n" +
+                "\"water5\": " + getRozniza().getWater5() + ",\n" +
+                "\"water175g\": " + getRozniza().getWater175g() + ",\n" +
+                "\"water175\": " + getRozniza().getWater175() + ",\n" +
+                "\"water05g\": " + getRozniza().getWater05g() + ",\n" +
+                "\"water05\": " + getRozniza().getWater05() + ",\n" +
+                "\"water05Sport\": " + getRozniza().getWater05Sport() + ",\n" +
+                "\"pompa\": " + getRozniza().getPompa() + ",\n" +
+                "\"bookKakProdlitJizn\": " + getRozniza().getBookKakProdlitJizn() + ",\n" +
+                "\"bookAtereSkleroza\": " + getRozniza().getBookAtereSkleroza() + ",\n" +
+                "\"bookVodaZdorovya\": " + getRozniza().getBookVodaZdorovya() + ",\n" +
+                "\"bookZdoveMateriRebenka\": " + getRozniza().getBookZdoveMateriRebenka() + ",\n" +
+                "\"bookKakRoditZdorovogoBaby\": " + getRozniza().getBookKakRoditZdorovogoBaby() + ",\n" +
+                "\"bookPochemyMiPolneem\": " + getRozniza().getBookPochemyMiPolneem() + ",\n" +
+                "\"bookPravilnoePitanie\": " + getRozniza().getBookPravilnoePitanie() + "\n" +
+                "  },\n" +
+                "  \"opt\": {\n" +
+                "    \"ballon\": " + getOpt().getBallon() + ",\n" +
+                "\"water5\": " + getOpt().getWater5() + ",\n" +
+                "\"water175g\": " + getOpt().getWater175g() + ",\n" +
+                "\"water175\": " + getOpt().getWater175() + ",\n" +
+                "\"water05g\": " + getOpt().getWater05g() + ",\n" +
+                "\"water05\": " + getOpt().getWater05() + ",\n" +
+                "\"water05Sport\": " + getOpt().getWater05Sport() + "\n" +
+                "  }\n" +
+                "}";
+    }
+
 
     public class Rozniza {
         private double ballon;

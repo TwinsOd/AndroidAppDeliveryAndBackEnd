@@ -14,7 +14,7 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/_25dp"
         android:clickable="true"
-        android:visibility="gone"
+        android:visibility="visible"
         app:fabSize="mini"
         app:srcCompat="@drawable/ic_send_24dp" />
 

@@ -36,9 +36,10 @@ final class JSONResponseBodyConverter<T> implements Converter<ResponseBody, T> {
             Log.i("MyLog", "IOException = " + e.toString());
             string = "\\{\"success\":\"0\",\"message\":\"error IOException\"}";
         }
-
+//for load price
         if (string.length() > 77) return new StringReader(string);
 
+//for load answerServer
         String[] listStr = string.split("\\{");
         String newStr = "{" + listStr[1];
         Log.i("MyLog", "fixJSON_string = reader.toString()=  " + string);

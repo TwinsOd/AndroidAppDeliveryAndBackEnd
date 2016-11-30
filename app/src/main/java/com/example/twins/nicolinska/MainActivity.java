@@ -2,12 +2,13 @@ package com.example.twins.nicolinska;
 
 import android.app.DialogFragment;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
-import com.example.twins.nicolinska.Const.PriceProduct;
 import com.example.twins.nicolinska.Interface.OnExitDialogListener;
 import com.example.twins.nicolinska.Model.PriceModel;
 import com.example.twins.nicolinska.Model.SaleModel;
@@ -18,7 +19,9 @@ import com.example.twins.nicolinska.fragments.SaleFragment;
 import com.example.twins.nicolinska.fragments.SendFragment;
 import com.example.twins.nicolinska.fragments.main.MainFragment;
 import com.example.twins.nicolinska.fragments.main.OrderFragment;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,12 +34,14 @@ import rx.subscriptions.CompositeSubscription;
 
 public class MainActivity extends AppCompatActivity implements OrderFragment.OnHeadlineSelectedListener,
         ChooseQuantityGoodsFragment.OnClickItemDialogValue, OnExitDialogListener {
+    public static final String PRICE_JSON = "price_json";
     private FragmentTransaction transaction;
     private List<SaleModel> mSaleList = new ArrayList<>();
     private SaleFragment saleFragment;
     private Map<String, String> mapOrder;
     private Map<String, SaleModel> listGoods = new HashMap<>();
-    OrderFragment orderFragment = null;
+    private OrderFragment orderFragment = null;
+    private SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements OrderFragment.OnH
         transaction.replace(R.id.container, new MainFragment());
         transaction.commit();
 
+        sharedPref = getSharedPreferences(this.getLocalClassName(), MODE_PRIVATE);
         loadPrice();
     }
 
@@ -120,78 +126,76 @@ public class MainActivity extends AppCompatActivity implements OrderFragment.OnH
     @Override
     public void onExitDialogListener() {
         orderFragment.initialInfoContainer();
-
     }
-
 
     private void initializeDataLittleBatke() {
         mSaleList.add(new SaleModel("Вода \"Миколiнська\" 5,0 л н/г", "При заказе: \n" +
-                "От 1 упаковки(2шт.) – " + PriceProduct.roznica.water5 + " грн.\n" +
-                "От 50 упаковок – " + PriceProduct.opt.water5 + " грн.",
+                "От 1 упаковки(2шт.) – " + priceModel.getRozniza().getWater5() + " грн.\n" +
+                "От 50 упаковок – " + priceModel.getOpt().getWater5() + " грн.",
                 "water5",
-                PriceProduct.roznica.water5,
-                PriceProduct.opt.water5));
+                priceModel.getRozniza().getWater5(),
+                priceModel.getOpt().getWater5()));
         mSaleList.add(new SaleModel("Вода \"Миколiнська\" 1,75 л н/г", "При заказе: \n" +
-                "От 1 упаковки(6шт.) – " + PriceProduct.roznica.water175 + " грн.\n" +
-                "От 50 упаковок – " + PriceProduct.opt.water175 + " грн.",
+                "От 1 упаковки(6шт.) – " + priceModel.getRozniza().getWater175() + " грн.\n" +
+                "От 50 упаковок – " + priceModel.getOpt().getWater175() + " грн.",
                 "water175",
-                PriceProduct.roznica.water175,
-                PriceProduct.opt.water175));
+                priceModel.getRozniza().getWater175(),
+                priceModel.getOpt().getWater175()));
         mSaleList.add(new SaleModel("Вода \"Миколiнська\" 1,75 л газ", "При заказе: \n" +
-                "От 1 упаковки(6шт.) – " + PriceProduct.roznica.water175g + " грн.\n" +
-                "От 10 упаковок – " + PriceProduct.opt.water175g + " грн.",
+                "От 1 упаковки(6шт.) – " + priceModel.getRozniza().getWater175g() + " грн.\n" +
+                "От 10 упаковок – " + priceModel.getOpt().getWater175g() + " грн.",
                 "water175g",
-                PriceProduct.roznica.water175g,
-                PriceProduct.opt.water175g));
+                priceModel.getRozniza().getWater175g(),
+                priceModel.getOpt().getWater175g()));
         mSaleList.add(new SaleModel("Вода \"Миколiнська\" 0,5 л н/г", "При заказе: \n" +
-                "От 1 упаковки(12шт.) – " + PriceProduct.roznica.water05 + " грн.\n" +
-                "От 10 упаковок – " + PriceProduct.opt.water05 + " грн.",
+                "От 1 упаковки(12шт.) – " + priceModel.getRozniza().getWater05() + " грн.\n" +
+                "От 10 упаковок – " + priceModel.getOpt().getWater05() + " грн.",
                 "water05",
-                PriceProduct.roznica.water05,
-                PriceProduct.opt.water05));
+                priceModel.getRozniza().getWater05(),
+                priceModel.getOpt().getWater05()));
         mSaleList.add(new SaleModel("Вода \"Миколiнська\" 0,5 л газ", "При заказе: \n" +
-                "От 1 упаковки(12шт.) – " + PriceProduct.roznica.water05g + " грн.\n" +
-                "От 10 упаковок – " + PriceProduct.opt.water05g + " грн.",
+                "От 1 упаковки(12шт.) – " + priceModel.getRozniza().getWater05g() + " грн.\n" +
+                "От 10 упаковок – " + priceModel.getOpt().getWater05g() + " грн.",
                 "water05g",
-                PriceProduct.roznica.water05g,
-                PriceProduct.opt.water05g));
+                priceModel.getRozniza().getWater05g(),
+                priceModel.getOpt().getWater05g()));
         mSaleList.add(new SaleModel("Вода \"Миколiнська\" 0,5 л н/г спорт", "При заказе: \n" +
-                "От 1 упаковки(12шт.) – " + PriceProduct.roznica.water05Sport + " грн.\n" +
-                "От 10 упаковок – " + PriceProduct.opt.water05Sport + " грн.",
+                "От 1 упаковки(12шт.) – " + priceModel.getRozniza().getWater05Sport() + " грн.\n" +
+                "От 10 упаковок – " + priceModel.getOpt().getWater05Sport() + " грн.",
                 "water05Sport",
-                PriceProduct.roznica.water05Sport,
-                PriceProduct.opt.water05Sport));
+                priceModel.getRozniza().getWater05Sport(),
+                priceModel.getOpt().getWater05Sport()));
     }
 
     private void initializeDataDooks() {
         mSaleList.add(new SaleModel("Книга \"Атеросклероза может не быть\".",
-                "Цена: 50.00грн.",
+                "Цена: " + priceModel.getRozniza().getBookAtereSkleroza() + "грн.",
                 "bookAtereSkleroza",
-                PriceProduct.roznica.bookAtereSkleroza, 0));
+                priceModel.getRozniza().getBookAtereSkleroza(), 0));
         mSaleList.add(new SaleModel("Книга \"Вода здоровья и долголетия\".",
-                "Цена: 50.00грн.",
+                "Цена: " + priceModel.getRozniza().getBookVodaZdorovya() + "грн.",
                 "bookVodaZdorovya",
-                PriceProduct.roznica.bookVodaZdorovya, 0));
+                priceModel.getRozniza().getBookVodaZdorovya(), 0));
         mSaleList.add(new SaleModel("Книга \"Здоровье матери и ребёнка\".",
-                "Цена: 50.00грн.",
+                "Цена: " + priceModel.getRozniza().getBookZdoveMateriRebenka() + "грн.",
                 "bookZdoveMateriRebenka",
-                PriceProduct.roznica.bookZdoveMateriRebenka, 0));
+                priceModel.getRozniza().getBookZdoveMateriRebenka(), 0));
         mSaleList.add(new SaleModel("Книга \"Как родить здорового малыша\".",
-                "Цена: 50.00грн.",
+                "Цена: " + priceModel.getRozniza().getBookKakRoditZdorovogoBaby() + "грн.",
                 "bookKakRoditZdorovogoBaby",
-                PriceProduct.roznica.bookKakRoditZdorovogoBaby, 0));
+                priceModel.getRozniza().getBookKakRoditZdorovogoBaby(), 0));
         mSaleList.add(new SaleModel("Книга \"Как продлить быстротечную жизнь\".",
-                "Цена: 90.00грн.",
+                "Цена: " + priceModel.getRozniza().getBookKakProdlitJizn() + "грн.",
                 "bookKakProdlitJizn",
-                PriceProduct.roznica.bookKakProdlitJizn, 0));
+                priceModel.getRozniza().getBookKakProdlitJizn(), 0));
         mSaleList.add(new SaleModel("Книга \"Почему мы полнеем\".",
-                "Цена: 50.00грн.",
+                "Цена: " + priceModel.getRozniza().getBookPochemyMiPolneem() + "грн.",
                 "bookPochemyMiPolneem",
-                PriceProduct.roznica.bookPochemyMiPolneem, 0));
+                priceModel.getRozniza().getBookPochemyMiPolneem(), 0));
         mSaleList.add(new SaleModel("Книга \"Правильное питание против болезней\".",
-                "Цена: 50.00грн.",
+                "Цена: " + priceModel.getRozniza().getBookPravilnoePitanie() + "грн.",
                 "bookPravilnoePitanie",
-                PriceProduct.roznica.bookPravilnoePitanie, 0));
+                priceModel.getRozniza().getBookPravilnoePitanie(), 0));
     }
 
     private final CompositeSubscription mSubscriptions = new CompositeSubscription();
@@ -211,10 +215,26 @@ public class MainActivity extends AppCompatActivity implements OrderFragment.OnH
         Log.i("MyLog", "getWater05 = " + model.getRozniza().getWater05());
         Log.i("MyLog", "getOpt().getWater05() = " + model.getOpt().getWater05());
         priceModel = model;
+
+        SharedPreferences.Editor ed = sharedPref.edit();
+        ed.putString(PRICE_JSON, model.toJSON());
+        ed.apply();
     }
 
     private void onDataError(Throwable throwable) {
         Log.i("MyLog", "onDataError" + throwable.toString());
+
+        Toast.makeText(this, "error connection!!!", Toast.LENGTH_SHORT).show();
+
+        String jsonPrice = sharedPref.getString(PRICE_JSON, "");
+        ObjectMapper mapper = new ObjectMapper();
+
+        try {
+            priceModel = mapper.readValue(jsonPrice, PriceModel.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "error get price!!!", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }
