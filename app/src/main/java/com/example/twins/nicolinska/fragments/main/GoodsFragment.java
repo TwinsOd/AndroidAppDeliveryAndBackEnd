@@ -34,6 +34,7 @@ public class GoodsFragment extends Fragment {
     private LinearLayoutManager mLayoutManager;
     private List<Goods> goodsList;
     private PriceModel priceModel;
+    private SharedPreferences sharedPref;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,14 +48,18 @@ public class GoodsFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        getPriceFromSharedPref();
         initializeData();
         initializeAdapter();
+
+        sharedPref = getActivity().getSharedPreferences(getActivity().getLocalClassName(), MODE_PRIVATE);
+
+        if (sharedPref.contains(PRICE_JSON)) {
+            getPriceFromSharedPref();
+        }
         return mView;
     }
 
     private void getPriceFromSharedPref() {
-        SharedPreferences sharedPref = getActivity().getSharedPreferences(getActivity().getLocalClassName(), MODE_PRIVATE);
         String jsonPrice = sharedPref.getString(PRICE_JSON, "");
         ObjectMapper mapper = new ObjectMapper();
 
@@ -64,6 +69,7 @@ public class GoodsFragment extends Fragment {
             e.printStackTrace();
             Log.i("MyLog", "error_GoodsFragment_getPriceFromSharedPref");
         }
+        mRecyclerView.notifyAll();
     }
 
     private void initializeAdapter() {

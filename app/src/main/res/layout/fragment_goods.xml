@@ -17,11 +17,6 @@
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|enterAlways">
 
-            <android.support.v4.widget.SwipeRefreshLayout
-                android:id="@+id/swipe_container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recycler_view"
                     android:layout_width="match_parent"
@@ -31,9 +26,6 @@
                     android:paddingTop="3dp">
 
                 </android.support.v7.widget.RecyclerView>
-
-            </android.support.v4.widget.SwipeRefreshLayout>
-
 
         </android.support.design.widget.CoordinatorLayout>
 

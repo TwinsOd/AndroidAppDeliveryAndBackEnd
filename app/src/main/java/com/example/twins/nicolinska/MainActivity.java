@@ -210,7 +210,7 @@ public class MainActivity extends AppCompatActivity implements OrderFragment.OnH
     }
 
     private void onDataSuccess(PriceModel model) {
-        Log.i("MyLog", "onDataSuccess**********************************");
+        Log.i("MyLog", "MainActivity_onDataSuccess**********************************");
         Log.i("MyLog", "getBallon = " + model.getRozniza().getBallon());
         Log.i("MyLog", "getWater05 = " + model.getRozniza().getWater05());
         Log.i("MyLog", "getOpt().getWater05() = " + model.getOpt().getWater05());
