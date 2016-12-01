@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.twins.nicolinska.Model.Goods;
@@ -13,9 +14,6 @@ import com.example.twins.nicolinska.R;
 
 import java.util.List;
 
-/**
- * Created by Twins on 05.07.2016.
- */
 public class GoodsRecyclerViewAdapter extends RecyclerView.Adapter<GoodsRecyclerViewAdapter.GoodsViewHolder> {
 
     public static class GoodsViewHolder extends RecyclerView.ViewHolder {
@@ -23,13 +21,15 @@ public class GoodsRecyclerViewAdapter extends RecyclerView.Adapter<GoodsRecycler
         TextView goodsName;
         TextView goodsPrice;
         ImageView goodsPhoto;
+        LinearLayout linearLayout;
 
         GoodsViewHolder(View itemView) {
             super(itemView);
             cv = (CardView) itemView.findViewById(R.id.recycler_view);
-            goodsName = (TextView) itemView.findViewById(R.id.person_name);
-            goodsPrice = (TextView) itemView.findViewById(R.id.person_age);
-            goodsPhoto = (ImageView) itemView.findViewById(R.id.person_photo);
+            goodsName = (TextView) itemView.findViewById(R.id.title);
+            goodsPrice = (TextView) itemView.findViewById(R.id.description);
+            goodsPhoto = (ImageView) itemView.findViewById(R.id.image);
+            linearLayout = (LinearLayout) itemView.findViewById(R.id.card_layout);
         }
     }
 

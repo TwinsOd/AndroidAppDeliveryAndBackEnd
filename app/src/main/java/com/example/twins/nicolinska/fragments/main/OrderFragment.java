@@ -15,7 +15,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.twins.nicolinska.R;
@@ -36,7 +35,6 @@ public class OrderFragment extends Fragment implements View.OnClickListener {
     private Context mContext;
     FloatingActionButton mFab;
     private CheckBox boxPompa;
-    ScrollView scrollViewInfo;
     SharedPreferences mSharedPreferences;
 
 
@@ -74,7 +72,6 @@ public class OrderFragment extends Fragment implements View.OnClickListener {
         tvLoadData = (TextView) mView.findViewById(R.id.tv_load_data);
         tvLoadData.setOnClickListener(this);
 
-        scrollViewInfo = (ScrollView) mView.findViewById(R.id.scroll_view_info);
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 
@@ -87,7 +84,6 @@ public class OrderFragment extends Fragment implements View.OnClickListener {
 
         if (mSharedPreferences.getString("pref_address", "").length() > 3 &&
                 mSharedPreferences.getString("pref_phone", "").length() > 3) {
-            scrollViewInfo.setVisibility(View.VISIBLE);
             tvLoadData.setVisibility(View.GONE);
 
             setInfo(R.id.text_name, "pref_name");
@@ -97,7 +93,6 @@ public class OrderFragment extends Fragment implements View.OnClickListener {
             setInfo(R.id.text_comments, "pref_comments");
         } else {
             tvLoadData.setVisibility(View.VISIBLE);
-            scrollViewInfo.setVisibility(View.GONE);
         }
     }
 
