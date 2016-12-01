@@ -36,6 +36,7 @@ public class MainFragment extends Fragment {
 
 
         viewPager = (ViewPager) mView.findViewById(R.id.viewpager);
+        viewPager.setOffscreenPageLimit(1);
         setupViewPager(viewPager);
         mToolbar = (Toolbar) mView.findViewById(R.id.toolbar);
         mToolbar.setTitle(getString(R.string.nicolinska));

@@ -3,6 +3,7 @@ package com.example.twins.nicolinska.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.preference.Preference;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,20 +24,20 @@ public class ButtonFragment extends android.preference.PreferenceFragment {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.layout.fragment_button_writing);
 
-        Preference button = (Preference) findPreference("save_button");
-        button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
+        Preference button = findPreference("save_button");
+        button.setOnPreferenceClickListener(onPreferenceClick -> {
                 getActivity().onBackPressed();
                 return true;
             }
-        });
+        );
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View mView = super.onCreateView(inflater, container, savedInstanceState);
-        mView.setBackgroundColor(getResources().getColor(R.color.windowBackground));
+        if (mView != null) {
+            mView.setBackgroundColor(getResources().getColor(R.color.windowBackground));
+        }
         return mView;
     }
 

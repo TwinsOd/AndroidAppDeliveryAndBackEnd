@@ -195,8 +195,7 @@
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/ic_person_gray_24dp"
                         android:textColor="@color/secondary_text"
-                        android:layout_marginBottom="@dimen/_3dp"
-                        android:text="Vladymyr" />
+                        android:layout_marginBottom="@dimen/_3dp"/>
 
                     <TextView
                         android:id="@+id/text_place"
@@ -205,8 +204,7 @@
                         android:layout_below="@+id/text_name"
                         android:drawableLeft="@drawable/ic_place_gray_24dp"
                         android:textColor="@color/secondary_text"
-                        android:layout_marginBottom="@dimen/_3dp"
-                        android:text="Краснова 14, кв. 196, пар 6, 4 этаж." />
+                        android:layout_marginBottom="@dimen/_3dp"/>
 
                     <TextView
                         android:id="@+id/text_phone"
@@ -215,8 +213,7 @@
                         android:layout_below="@+id/text_place"
                         android:drawableLeft="@drawable/ic_phone_gray_24dp"
                         android:textColor="@color/secondary_text"
-                        android:layout_marginBottom="@dimen/_3dp"
-                        android:text="0936983909, 0502985379" />
+                        android:layout_marginBottom="@dimen/_3dp"/>
 
                     <TextView
                         android:id="@+id/text_email"
@@ -225,8 +222,7 @@
                         android:layout_below="@+id/text_phone"
                         android:drawableLeft="@drawable/ic_email_gray_24dp"
                         android:textColor="@color/secondary_text"
-                        android:layout_marginBottom="@dimen/_3dp"
-                        android:text="twins@gmail.com" />
+                        android:layout_marginBottom="@dimen/_3dp"/>
 
                     <TextView
                         android:id="@+id/text_comments"

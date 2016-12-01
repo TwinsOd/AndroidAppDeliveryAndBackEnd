@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="@dimen/_15dp"
     android:background="@color/windowBackground"
     tools:context="com.example.twins.nicolinska.fragments.ChooseQuantityGoodsFragment"
     android:orientation="vertical">
@@ -11,6 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:textSize="22sp"
+        android:gravity="center_horizontal"
         android:layout_margin="@dimen/_5dp" />
 
     <NumberPicker
@@ -27,7 +30,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
 
         <Button
@@ -35,7 +38,7 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="?android:attr/borderlessButtonStyle"
+            android:backgroundTint="@color/lightColorPrimary"
             android:text="ОТМЕНА" />
 
         <Button
@@ -43,7 +46,7 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="?android:attr/borderlessButtonStyle"
+            android:backgroundTint="@color/lightColorPrimary"
             android:text="СОХРАНИТЬ" />
 
     </LinearLayout>

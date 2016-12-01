@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,22 +86,26 @@ public class OrderFragment extends Fragment implements View.OnClickListener {
         if (mSharedPreferences.getString("pref_address", "").length() > 3 &&
                 mSharedPreferences.getString("pref_phone", "").length() > 3) {
             tvLoadData.setVisibility(View.GONE);
-
-            setInfo(R.id.text_name, "pref_name");
-            setInfo(R.id.text_place, "pref_address");
-            setInfo(R.id.text_phone, "pref_phone");
-            setInfo(R.id.text_email, "pref_email");
-            setInfo(R.id.text_comments, "pref_comments");
         } else {
             tvLoadData.setVisibility(View.VISIBLE);
         }
+
+        setInfo(R.id.text_name, "pref_name");
+        setInfo(R.id.text_place, "pref_address");
+        setInfo(R.id.text_phone, "pref_phone");
+        setInfo(R.id.text_email, "pref_email");
+        setInfo(R.id.text_comments, "pref_comments");
     }
 
     private void setInfo(int idText, String idPref) {
+
         textView = (TextView) mView.findViewById(idText);
         String value = mSharedPreferences.getString(idPref, "");
-        if (value.length() > 0)
+
+        if (value.length() > 0) {
             textView.setText(value);
+            textView.setVisibility(View.VISIBLE);
+        }
         else
             textView.setVisibility(View.GONE);
     }

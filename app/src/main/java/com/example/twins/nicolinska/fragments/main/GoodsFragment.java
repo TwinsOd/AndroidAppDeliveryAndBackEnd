@@ -66,7 +66,6 @@ public class GoodsFragment extends Fragment {
             priceModel = mapper.readValue(jsonPrice, PriceModel.class);
         } catch (IOException e) {
             e.printStackTrace();
-            Log.i("MyLog", "error_GoodsFragment_getPriceFromSharedPref");
         }
     }
 
