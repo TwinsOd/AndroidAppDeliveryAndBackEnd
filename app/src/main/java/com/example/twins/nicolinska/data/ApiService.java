@@ -14,9 +14,9 @@ import rx.Observable;
 public interface ApiService {
 
     @FormUrlEncoded
-    @POST("/app2/create_order.php")
+    @POST("/app/your_name.php")
     Observable<AnswerServer> requestOrder(@FieldMap Map<String, String> map);
 
-    @POST("/app2/price.json")
+    @POST("/app/price.json")
     Observable<PriceModel> requestPrice();
 }

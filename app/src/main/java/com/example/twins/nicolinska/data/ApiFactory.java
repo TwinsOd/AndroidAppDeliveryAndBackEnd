@@ -13,7 +13,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 
 
 public class    ApiFactory {
-    private static final String BASE_URL = "http://www.vo-da.com";
+    private static final String BASE_URL = "http://www.your-site.com";
     private static final int CONNECT_TIMEOUT = 60;
     private static final int READ_TIMEOUT = 60;
 
