@@ -14,7 +14,7 @@ apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "24.0.2"
+    buildToolsVersion "25.0.2"
 
     defaultConfig {
         applicationId "od.twins.water"
@@ -45,7 +45,7 @@ android {
     }
 }
 ext {
-    SUPPORT_LIBRARY_VERSION = '25.0.1'
+    SUPPORT_LIBRARY_VERSION = '25.3.1'
     PLAY_SERVICES_VERSION = '9.2.0'
     RETROFIT_VERSION = '2.1.0'
     OKHTTP_VERSION = '3.3.1'
